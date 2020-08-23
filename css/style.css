@@ -7,8 +7,9 @@ body {
 }
 
 .game-container {
-  width: 800px;
+  width: 960px;
   margin: 0 auto;
+  margin-top: 10px;
 }
 .game-container h1 {
   font-size: 3em;
@@ -22,7 +23,7 @@ body {
 }
 .game-container .buttons button {
   margin: 10px;
-  background: blue;
+  background: #364aaf;
   border: none;
   padding: 15px 30px;
   color: white;
@@ -39,6 +40,10 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+.game-hud .rgb-to-guess {
+  font-size: 1.6em;
+  text-align: center;
+}
 .game-hud .score-display {
   height: 120px;
   width: 120px;
@@ -52,9 +57,16 @@ body {
 }
 .game-hud .game-feedback {
   display: block;
+  color: #eee;
   height: 30px;
   font-size: 1.6em;
   margin-top: 20px;
+}
+.game-hud .game-feedback.correct {
+  color: #20ff7e;
+}
+.game-hud .game-feedback.wrong {
+  color: #fd413c;
 }
 
 #generated {

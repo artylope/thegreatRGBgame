@@ -73,7 +73,7 @@ function pickColor(){
     let pickedColor =  colors[pickedNumber];
     console.log('pickedColor',pickedNumber +1 , pickedColor);
     let display = document.getElementById('rgb-to-guess');
-    display.innerHTML = `<h2>Guess which is ${pickedColor.toUpperCase()}</h2>`
+    display.innerHTML = `<h2>Guess which is ${pickedColor.toUpperCase()} ?</h2>`
     rgbToGuess = pickedColor;
     return pickedColor;
 }
@@ -84,19 +84,27 @@ function checkColorMatch(rgb,element){
     if(rgb.replace(/\s*,\s*/g, ",")===rgbToGuess.replace(/\s*,\s*/g, ",")){
         console.log('yay correct');
         gameFeedbackDisplay.innerHTML = 'Yay correct!';
+        gameFeedbackDisplay.className = "game-feedback correct";
         score++;
         renderScore();
-        getNewColors();
+        
+        setTimeout( function(){ 
+            getNewColors();
+         }, 500
+        );
     } else {
         console.log(element);
         element.style.opacity= 0;
         gameFeedbackDisplay.innerHTML = 'Wrong try again!';
+        gameFeedbackDisplay.className = "game-feedback wrong";
         console.log('wrong try again');
-        setTimeout( function(){ 
-           gameFeedbackDisplay.innerHTML = '';
-        }, 1000
-            );
+        
     }
+    setTimeout( function(){ 
+        gameFeedbackDisplay.innerHTML = '';
+        gameFeedbackDisplay.className = "game-feedback";
+     }, 2000
+    );
 }
 
 generateAllRGBColors();
