@@ -1,7 +1,8 @@
 let colors=[];
-let noOfColors = 10;
+let noOfColors = 9;
 let rgbToGuess;
 let score = 0;
+let gameFeedbackDisplay = document.getElementById('game-feedback');
 
 let newColorsBtn = document.getElementById('new-colors');
 newColorsBtn.addEventListener('click', getNewColors);
@@ -62,8 +63,8 @@ function displaySquares(){
 }
 
 function renderScore(){
-    let scoreDisplay = document.getElementById('score');
-    scoreDisplay.innerText = score;
+    let scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.innerHTML = score;
 }
 
 //pick one number out of the noOfColors to be the picked color
@@ -72,7 +73,7 @@ function pickColor(){
     let pickedColor =  colors[pickedNumber];
     console.log('pickedColor',pickedNumber +1 , pickedColor);
     let display = document.getElementById('rgb-to-guess');
-    display.innerHTML = `<h2>${pickedColor}</h2>`
+    display.innerHTML = `<h2>Guess which is ${pickedColor.toUpperCase()}</h2>`
     rgbToGuess = pickedColor;
     return pickedColor;
 }
@@ -82,13 +83,19 @@ function checkColorMatch(rgb,element){
     console.log(rgbToGuess.replace(/\s*,\s*/g, ","));
     if(rgb.replace(/\s*,\s*/g, ",")===rgbToGuess.replace(/\s*,\s*/g, ",")){
         console.log('yay correct');
+        gameFeedbackDisplay.innerHTML = 'Yay correct!';
         score++;
         renderScore();
         getNewColors();
     } else {
         console.log(element);
-        element.style.backgroundColor = `rgb(255,255,255)`;
+        element.style.opacity= 0;
+        gameFeedbackDisplay.innerHTML = 'Wrong try again!';
         console.log('wrong try again');
+        setTimeout( function(){ 
+           gameFeedbackDisplay.innerHTML = '';
+        }, 1000
+            );
     }
 }
 

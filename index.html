@@ -8,13 +8,26 @@
     <title>The Great RGB Game</title>
 </head>
 <body>
-    <h1>The Great RGB Game</h1>
-    <button id="new-colors">New Colors</button>
-    <button id="reset-game">Reset Game</button>
-    <div id="score-display"></div>
-    <div id="squares-container" class="squares-container">
-    </div>
-    <div id="rgb-to-guess"></div>
+
+    <div class="game-container">
+        <h1>The Great RGB Game</h1>
+
+        <div class="buttons"> 
+            <button id="new-colors">New Colors</button>
+            <button id="reset-game">Reset Game</button>
+        </div>
+        
+        <div class="game-hud">
+            <div id="score-display" class="score-display"></div>
+            <div id="game-feedback" class="game-feedback"></div>
+            <div id="rgb-to-guess"></div>
+            
+        </div>
+       
+        <div id="squares-container" class="squares-container">
+        </div>
+        
+    </div>   
     <script src="js/script.js"></script>
 </body>
 </html>
